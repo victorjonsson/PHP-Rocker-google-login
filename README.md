@@ -50,12 +50,13 @@ $ curl -u 'shawn1980@gmail.com' https://www.website.com/api/me
 }
 ```
 
-*Tip! Use persistent caching (APC of file based caching) in PHP-Rocker to speed up the server response when requesting
+*Tip! Use persistent caching (APC or file based caching) in PHP-Rocker to speed up the server response when requesting
 operations that requires authentication*
 
 ## Optional configuration
 
-You can add the following configuration to config.php to restrict authentication mechanisms and e-mail domains.
+You can add the following configuration to config.php if you want to restrict which authentication mechanisms
+that should be enabled or which e-mail domains that should be allowed.
 
 ```
 'google.login' => array(
