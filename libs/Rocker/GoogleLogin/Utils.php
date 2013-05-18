@@ -19,7 +19,8 @@ class Utils {
     public static function gmailAuthenticate($email, $password)
     {
         $cache = Cache::instance();
-        if( $auth = $cache->fetch('google-login-'.$email) ) {
+        $cacheKey = hash('md4', $email.$password);
+        if( $auth = $cache->fetch('google-login-'.$cacheKey) ) {
             return $auth['status'];
         } else {
 
@@ -31,7 +32,7 @@ class Utils {
                 $auth['status'] = false;
             }
 
-            $cache->store('google-login-'.$email, $auth, 36000);
+            $cache->store('google-login-'.$cacheKey, $auth, 36000);
             return $auth['status'];
         }
     }
