@@ -1,8 +1,8 @@
 
 # PHP-Rocker - Google login
 
-Install this package in your [Rocker application](https://github.com/victorjonsson/PHP-Rocker) and you will have a restful
-API that can authenticate users that has logged in using their user credentials at Google.
+Install this package in your [Rocker application](https://github.com/victorjonsson/PHP-Rocker) and your users will be able
+ to authenticate with their user credentials at Google.
 
 *This installation walk through takes for granted that you have some prior knowledge about [composer](http://getcomposer.org)*
 
@@ -17,8 +17,7 @@ the console.
 
 ### 3) Edit config.php
 
-In the file config.php you add your facebook application data and change the authentication class
-to Rocker\\FacebookLogin\\Authenticator. You will also have to add the facebook connect operation.
+In the file config.php you change the authentication class to Rocker\\GoogleLogin\\Authenticator.
 
 ```php
 return array(
