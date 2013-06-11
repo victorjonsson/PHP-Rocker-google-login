@@ -28,11 +28,12 @@ class Authenticator extends RockerAuthenticator {
      */
     public function googleAuth($data, Server $server)
     {
+        error_log('In here');
         $config = $server->config('google.login');
         list($email, $pass) = explode(':', $data);
 
         // restricted domain
-        if( $config && !empty($config['allowed_domains']) && !in_array($email, explode(',', $config['allowed_domains']))) {
+        if( !$this->isAllowedEmail($email, $config) ) {
             return null;
         }
 
@@ -53,6 +54,20 @@ class Authenticator extends RockerAuthenticator {
         }
 
         return $user;
+    }
+
+    /**
+     * @param string $email
+     * @param array $config
+     * @return bool
+     */
+    private function isAllowedEmail($email, $config)
+    {
+        if( !empty($config) && !empty($config['allowed_domains'])) {
+            $domain = current( array_slice(explode('@', $email), 1,1) );
+            return in_array($domain, explode(',', $config['allowed_domains']));
+        }
+        return true;
     }
 
     /**
@@ -98,7 +113,7 @@ class Authenticator extends RockerAuthenticator {
     {
         $conf = $server->config('google.login');
         if( !$conf || empty($conf['disabled_auth_mechanisms']) || !in_array('basic', explode(',', $conf['disabled_auth_mechanisms']))) {
-            return parent::rc4Auth($data, $server);
+            return parent::basicAuth($data, $server);
         }
         return null;
     }
