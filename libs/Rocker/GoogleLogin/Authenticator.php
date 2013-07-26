@@ -28,7 +28,6 @@ class Authenticator extends RockerAuthenticator {
      */
     public function googleAuth($data, Server $server)
     {
-        error_log('In here');
         $config = $server->config('google.login');
         list($email, $pass) = explode(':', $data);
 
