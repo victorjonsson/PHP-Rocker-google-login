@@ -1,4 +1,3 @@
-
 # PHP-Rocker - Google login
 
 Install this package in your [Rocker application](https://github.com/victorjonsson/PHP-Rocker) and your users will be able
@@ -38,7 +37,7 @@ he doesn't exist in the database when authenticated.
 
 
 ```bash
-$ curl -u 'shawn1980@gmail.com' https://www.website.com/api/me
+$ curl -H 'Authorization: google shawn1980@gmail.com:google-password' https://www.website.com/api/me
 
 {
     "id" : 10341,
