@@ -65,6 +65,11 @@ that should be enabled or which e-mail domains that should be allowed.
     'allowed_domains' => 'somewebsite.com,otherwebsite.co.uk',
 
     # Comma separated string with authentication mechanism that should be disabled
-    'disabled_auth_mechanisms' => 'basic,rc4'
+    'disabled_auth_mechanisms' => 'basic,rc4',
+    
+    # Whether or not the user credentials should be base64_decoded by the Authentication 
+    # class. This option should be set to true in case your'e using rocker.js to 
+    # communicate with your Rocker server
+    'base64_encoded' => true
 )
 ```
