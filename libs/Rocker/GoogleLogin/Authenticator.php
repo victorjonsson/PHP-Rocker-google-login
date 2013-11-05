@@ -29,7 +29,7 @@ class Authenticator extends RockerAuthenticator {
     public function googleAuth($data, Server $server)
     {
         $config = $server->config('google.login');
-        list($email, $pass) = explode(':', $data);
+        list($email, $pass) = explode(':', base64_decode($data));
 
         // restricted domain
         if( !$this->isAllowedEmail($email, $config) ) {
